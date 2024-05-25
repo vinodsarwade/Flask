@@ -4,7 +4,7 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/Home") #here we handling two routes for single function
 def home():
-    return "<h1> Home page</h1>"
+    return "<h1> welcome to Home page</h1>"
 
 @app.route("/about")
 def about():
