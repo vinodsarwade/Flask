@@ -37,11 +37,14 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form  = LoginForm()
-    return render_template('login.html',title ='Login',form=form)
-
+    if form.validate_on_submit():
+        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+            flash('You have been logged in!','success')
+            return redirect(url_for('home'))
+    return render_template('login.html', title='Log in', form=form)
 
 
 if __name__=="__main__":
